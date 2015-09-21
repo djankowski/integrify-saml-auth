@@ -1,0 +1,4 @@
+
+/_custom/samlauth/route:
+  path: "/samlauth"
+  express4: true
