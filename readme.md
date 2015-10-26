@@ -1,4 +1,4 @@
-The folder can be installed into an integrify instance and configured to allow SSO integration via SAML 2.0
+The folder can be installed into an Integrify instance and configured to allow SSO integration via SAML 2.0
 
 To configure:
 
