@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+console.log("samls loaded: " + samls.passport._strategies)
 
 
 app.use(samls.passport.initialize());
