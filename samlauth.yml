@@ -1,4 +1,4 @@
 
-/_custom/samlauth/route:
+/_custom/instegrify-saml-auth-master/route:
   path: "/samlauth"
   express4: true
