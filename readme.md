@@ -1,6 +1,6 @@
-The folder can be installed into an Integrify instance and configured to allow SSO integration via SAML 2.0
+## The folder can be installed into an Integrify instance and configured to allow SSO integration via SAML 2.0
 
-To configure:
+### To configure:
 
 * Download and unzip this folder. Save it under webserver/app/_custom in your Integrify installation.
 * from a command prompt in this folder run the command "npm install"
@@ -16,7 +16,7 @@ If Integrify is running on port 80 or por 443, remove the -yourport section from
 * browse to http(s)://{integrify server}/samlauth/{app_key}/metadata to get the XML metadata that describes this service including the Assertion Consumer Service URL and Identifier
 
 
-Mapping your SAML Attributes to Integrify profile fields:
+### Mapping your SAML Attributes to Integrify profile fields:
 
 Locate the section of your config.js file for teh fieldMap. It will look something like this by default:
 
