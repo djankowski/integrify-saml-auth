@@ -17,7 +17,8 @@ var config = {
                 "NameFirst": "givenName",
                 "NameLast" : "sn",
                 "Email" : "mail",
-                "UserName" : "mail"
+                "UserName" : "mail",
+                "Defaults":{"TimeZone":"Eastern Standard Time","Language": "US English"}
             }
         }
     }

@@ -52,14 +52,14 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                 logger.info("User found", existingUser, "integrify-saml");
             }
 
-            var mapKeys = R.keys(keyMap);
+            var mapKeys = R.keys(R.omit(['Defaults'],keyMap));
             var tz = instanceAuthConf.defaultTimeZone;
 
             if (tz) {
                 thisUser.TimeZone = tz;
             }
             logger.info("Mapping SAML Response values to user properties", "integrify-saml");
-            var mapIt = function(x) { thisUser[x] = user[keyMap[x]]; };
+            var mapIt = function(x) { thisUser[x] = user[keyMap[x]] || keyMap.Defaults[x]; };
             R.forEach(mapIt, mapKeys); //=> [1, 2, 3]
             //_.each(mapKeys, function (key) {
             //    thisUser[key] = user[keyMap[key]];
