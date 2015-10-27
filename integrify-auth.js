@@ -53,11 +53,7 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
             }
 
             var mapKeys = R.keys(R.omit(['Defaults'],keyMap));
-            var tz = instanceAuthConf.defaultTimeZone;
 
-            if (tz) {
-                thisUser.TimeZone = tz;
-            }
             logger.info("Mapping SAML Response values to user properties", "integrify-saml");
             var mapIt = function(x) { thisUser[x] = user[keyMap[x]] || keyMap.Defaults[x]; };
             R.forEach(mapIt, mapKeys); //=> [1, 2, 3]
@@ -69,9 +65,10 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
 
             //update or insert the user
             var saveUserUrl = url.resolve(instanceAuthConf.integrify_base_url, "users" + (thisUser.SID ? "/" + thisUser.SID : ""));
-
+            var reqMethod = thisUser.SID ? "PUT" : "POST";
             logger.info("Saving user to Integrify", "integrify-saml");
-            request.post({
+            request({
+                method: reqMethod,
                 url: saveUserUrl,
                 json: thisUser,
                 headers: {Authorization: "Bearer " + tokenObj.access_token}
