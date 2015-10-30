@@ -18,8 +18,10 @@ app.use(morgan('dev'));
 var logger;
 try {
     logger = require('integrify-require')('integrify-logger');
+    logger.info("using integrify logger", "integrify-saml")
 } catch(e) {
     console.log(e);
+    console.log("using console for logging")
     var logger = console;
 }
 

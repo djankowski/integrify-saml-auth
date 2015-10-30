@@ -33,7 +33,7 @@ var Samls = function samls() {
 
                 }
                 catch (e) {
-                    console.error("could not load the cert for " + appkey)
+                    console.error(e)
                 }
 
             }
