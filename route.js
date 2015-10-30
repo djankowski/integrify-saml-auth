@@ -3,7 +3,7 @@
  */
 var samls = require("./samls");
 var bodyParser = require('body-parser')
-var logger = require('morgan');
+var morgan = require('morgan');
 var fs = require ("fs")
 var path = require("path")
 var express = require('express');
@@ -13,7 +13,17 @@ var url = require("url")
 var cookieParser = require("cookie-parser")
 var R  = require("ramda")
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
+
+var logger;
+try {
+    logger = require('integrify-require')('integrify-logger');
+} catch(e) {
+    console.log(e);
+    var logger = console;
+}
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -57,9 +67,17 @@ app.get('/:appkey/login', function(req, res, next) {
 
 app.post('/:appkey/login/callback', function(req, res, next) {
     samls.passport.authenticate('saml-' + req.params.appkey, function(err, user, info) {
+
         var config = samls.config[req.params.appkey];
-        if (err) { return next(err); }
-        if (!user) { return res.status(500).send(err) }
+        if (err) {
+            logger.error("Error extracting user from saml assertion:", err, 'integrify-saml')
+            return next(err);
+        }
+        if (!user) {
+            logger.error("Empty user from saml assertion:", 'integrify-saml')
+            return res.status(500).send(err)
+        }
+        logger.info("user extracted from saml assertion:", user, 'integrify-saml')
         integrifyAuth.loginSaml(user, config.integrify, function (err, tok) {
             if (err) {
                 return res.status(500).send(err);
