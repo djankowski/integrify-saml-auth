@@ -22,7 +22,7 @@ try {
 } catch(e) {
     console.log(e);
     console.log("using console for logging")
-    var logger = console;
+    logger = console;
 }
 
 
