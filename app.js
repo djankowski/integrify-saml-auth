@@ -1,5 +1,5 @@
 var express = require('express');
-var subApp = require("./route-multi.js")
+var subApp = require("./route.js")
 var app = express();
 
 app.use("/",subApp.router)
