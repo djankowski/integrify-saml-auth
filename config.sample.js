@@ -1,8 +1,8 @@
 var config = {
-    integrifyinstance: {
+    myapikey: {
         samlStrategy: {
 
-            "path": "/samlcallback", //this will be appended to the full URL that the IDP muts post back to http://yourinstance/samlauth/yourAPIKey/samlcallback
+            "path": "/myapikey/samlcallback", //this will be appended to the full URL that the IDP muts post back to http://yourinstance/samlauth/yourAPIKey/samlcallback
             "entryPoint": "https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php", //the url for initiating a SAML Authn request at your IDP
             "issuer": "IntegrifySAMLTest", //a unique ID typically provided by your IDP
             "protocol": "https://", // http or https
