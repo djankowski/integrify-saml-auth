@@ -4,7 +4,7 @@
 
 * Download and unzip this folder. Save it under webserver/app/_custom in your Integrify installation.
 * from a command prompt in this folder run the command "npm install"
-* Obtain a certificate in base64 format if required to verify the SAML asertion sent from your IDP and copy it to this folder
+* Obtain signing certificate in base64 format if required to verify the SAML asertion sent from your IDP and copy it to this folder
 * Copy the config.saml.js, config-adfs.js or config-openid.js (example configs) file to a file named config.js in this folder
 * Edit config.js based on the requirements specified by your IDP and your Integrify instance settings. Note, you will need a Consumer_Key with API access with Impersonation enabled. See your OAUTH_CONSUMERS table.
 * Copy the samlauth.yml file to  /webserver/app/data/routes
