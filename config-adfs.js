@@ -1,7 +1,7 @@
 var config = {
-    integrifyinstance: {
+    myapikey: {
         samlStrategy: {
-            path: '/login/callback',
+            path: '/myapikey/callback',
             entryPoint: 'https://integrifyadfs.integrify.com/adfs/ls',
             issuer: "integrify-saml-client",
             protocol: "https://",
@@ -15,7 +15,7 @@ var config = {
         integrify: {
             "service_user": "iApprove",
             "integrify_base_url": "http://localhost:3500",
-            "consumer_key": "integrifyinstance",
+            "consumer_key": "myapikey",
             "consumer_secret": "mysecret",
             "fieldMap": {
                 "NameFirst": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
