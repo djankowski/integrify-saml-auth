@@ -96,7 +96,7 @@ app.post('/:appkey/login/callback', function(req, res, next) {
                 var redirectUrl = url.format(redirectrUrlObj);
                 return res.redirect(redirectUrl);
             } else {
-                return res.status(500).send("Your login too too long to process");
+                return res.status(500).send("Your login took too long to process");
 
             }
 
