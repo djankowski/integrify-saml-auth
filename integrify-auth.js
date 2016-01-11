@@ -78,6 +78,8 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                     return callback(err);
                 }
 
+                logger.info("Result of saving user" + save.toString(),  "integrify-saml");
+
                 //activate the user's original token by calling the impersonate api with request-token=true in the querystring.
                 imepersonateURL = url.resolve(instanceAuthConf.integrify_base_url, "access/impersonate?key=" + instanceAuthConf.consumer_key + "&user=" + thisUser.UserName);
 
@@ -91,6 +93,7 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                         tokenObj = JSON.parse(tokenObj);
                         logger.info("recieved a valid access token", tokenObj, "integrify-saml")
                     }
+
                     callback(err, tokenObj);
                 });
 
