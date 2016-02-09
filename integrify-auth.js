@@ -90,7 +90,7 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                 if (instanceAuthConf.tokenExpiresInMinutes) {
 
                     var d = new Date();
-                    d.setMinutes(d.getMinutes() + instanceAuthConf.expiresInMinutes);
+                    d.setMinutes(d.getMinutes() + instanceAuthConf.tokenExpiresInMinutes);
 
                    imepersonateURL = imepersonateURL + "&expires=" + d.getTime();
                 }
