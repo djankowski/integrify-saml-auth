@@ -87,6 +87,13 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                 //options = {key: instanceAuthConf.consumer_key,secret:instanceAuthConf.consumer_secret,"url":instanceAuthConf.integrify_base_url, username:thisUser.UserName, expiresInMinutes:20}
                 //integrifyToken.getTokenFromJWT(options, function(err,tokenObj){
 
+                if (instanceAuthConf.expiresInMinutes) {
+
+                    var d = new Date();
+                    d.setMinutes(d.getMinutes() + instanceAuthConf.expiresInMinutes);
+
+                   imepersonateURL = imepersonateURL + "&expires=" + d.getTime();
+                }
                 request(imepersonateURL, function (err, resp, tokenObj) {
                     if (!err) {
 
