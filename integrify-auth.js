@@ -92,7 +92,7 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
                     var d = new Date();
                     d.setMinutes(d.getMinutes() + instanceAuthConf.tokenExpiresInMinutes);
 
-                   imepersonateURL = imepersonateURL + "&expires=" + d.getTime();
+                   imepersonateURL = imepersonateURL + "&expires=" +  (d.getTime()/1000.00);
                 }
                 request(imepersonateURL, function (err, resp, tokenObj) {
                     if (!err) {
