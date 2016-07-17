@@ -61,6 +61,9 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
             //    thisUser[key] = user[keyMap[key]];
             //});
 
+            if (thisUser.DeletedDateF) {
+                return res.status(401).send('User account has been deactivated');
+            }
             thisUser.IsActive = true;
 
             //update or insert the user
