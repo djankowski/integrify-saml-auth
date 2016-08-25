@@ -61,8 +61,12 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
             //    thisUser[key] = user[keyMap[key]];
             //});
 
+            if (!thisUser.NameFirst || !thisUser.NameLast || !thisUser.Email || !thisUser.UserName) {
+                return callback("First Name, Last Name, Email and User Name must be passed in the SAML Assertion.")
+            }
+
             if (thisUser.DeletedDateF) {
-                return res.status(401).send('User account has been deactivated');
+                return callback('User account has been deactivated');
             }
             thisUser.IsActive = true;
 
