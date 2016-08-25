@@ -51,7 +51,7 @@ app.get("/:appkey/", function(req,res){
     var integrifyUrl = req.query.r || req.query.redirect;
     res.cookie('integrifyUrl', integrifyUrl, {maxAge: exp});
 
-    res.redirect("login")
+    res.redirect("/samlauth/" + req.params.appkey + "/login")
 
 })
 
