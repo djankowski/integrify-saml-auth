@@ -62,6 +62,7 @@ integrifyAuth.loginSaml = function loginSaml(user, instanceAuthConf, callback) {
             //});
 
             if (!thisUser.NameFirst || !thisUser.NameLast || !thisUser.Email || !thisUser.UserName) {
+                logger.error("First Name, Last Name, Email and User Name must be passed in the SAML Assertion.", tokenObj, "integrify-saml")
                 return callback("First Name, Last Name, Email and User Name must be passed in the SAML Assertion.")
             }
 
